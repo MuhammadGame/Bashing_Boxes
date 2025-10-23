@@ -50,13 +50,14 @@ read answer
 if [[ $answer == "A" ]] || [[ $answer == "a" ]]; then 
 	echo "${array_of_objects[@]}"
 
-	sleep 4
-	echo "    "
-	echo "    "
-	echo "    "
-	echo "D) want to put something in my magic bag (awnser with the refered letter)"
-	echo "E) want to remove somthing from my magic bag"
-	echo "F) List them again"
+	sleep 2
+	echo -e "
+
+	"
+	echo "D) want to put something in my magic bag (answer with the refered letter)"
+	echo "E) want to remove a specific item from my magic bag"
+	echo "F) want to view a specfic item"
+	echo "G) want to remove an item at the end of the bag"
 
 	read answer2
 
@@ -67,12 +68,13 @@ if [[ $answer == "A" ]] || [[ $answer == "a" ]]; then
 		echo " "
 		echo "what do you want to add to the bag?"
 		read item
-		array_of_objects+=("item")
+		array_of_objects+=("$item")
 		sleep 1
-		echo " "
-		echo " "
-		echo " "
-		echo "check the list $name"
+		echo -e "${array_of_objects[@]}"
+
+
+
+
 	elif [[ $answer2 == "E" ]] || [[ $answer2 == "e" ]] then
 		echo " "
 		echo " "
@@ -81,35 +83,32 @@ if [[ $answer == "A" ]] || [[ $answer == "a" ]]; then
 		echo " "
 		echo " "
 		echo "${array_of_objects[@]}"
-		read -p "enter the item  you want to remove from my bag" item
+		read -p "enter a number you want to remove from my bag between 0-9: " number
+		unset array_of_objects[$((number-1))]
+		echo -e "${array_of_objects[@]}"
 
+
+	elif [[ $answer2 == "F" ]] || [[ $answer2 == "f" ]]; then
+		echo "pick any number from the 0-9 to inspect it"
+		read number2
+		echo "${array_of_objects[number2]}"
+
+	elif [[ $answer2 == "G" ]] || [[ $answer2 == "g" ]]; then
+
+		unset 'array_of_objects[$((${#array_of_objects[@]} - 1))]'
+			echo -e "${array_of_objects[@]}"
 
 
 
 	fi
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 elif [[ $anwser == "B" ]] || [[ $anwser == "b" ]]; then
 	echo "alright"
 	sleep 3 
 	exit
  	#statements [[$awnser == "B"]];  
-
 elif [[ $anwser == "C" ]]; then
-exit 
- 	#statements [[$C)=="C"]]; #then close the script 
+	exit 
 fi
 
 #After the array_of_objects is listed i need to the option for the user to use 
