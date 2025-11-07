@@ -13,74 +13,7 @@ array_of_objects=(
 	"Latern" "Toolbox"
 )
 
-#Backend Option Functions
-option3(){
 
-
-		echo "H) save this bag!(answer with the refered letter)"
-		echo "I) load a previously saved bag"
-		echo "J) List all the saved bags"
-
-		read answer3
-
-		if [[ $answer3 == "H" ]] || [[ $answer3 == "h" ]]; then
-
-			echo -e "
-
-			K) what do you want to name this save_bag "
-			read save_name
-			touch /home/sasuke/Bashing_Boxes/data/$save_name.sh
-			declare -p array_of_objects > /home/sasuke/Bashing_Boxes/data/$save_name.sh
-
-
-		elif [[ $answer3 == "I" ]] || [[ $answer3 == "i" ]] then 
-
-		
-			 
-			echo -e "
-
-
-						Here are the saved bags"
-						
-			sleep 2
-
-			ls /home/sasuke/Bashing_Boxes/data
-
-			read -p "
-						type the name of your bag   " save_name
-
-
-			if [[ "$save_name" != *.sh ]]; then 
-				save_name="${save_name}.sh"
-			fi
-
-				save_path="/home/sasuke/Bashing_Boxes/data/$save_name"
-
-
-				if [[ -f /home/sasuke/Bashing_Boxes/data/$save_name ]] then
-
-			 source "/home/sasuke/Bashing_Boxes/data/$save_name"
-			 echo -e "
-
-			 			This array has ben loaded" 
-			 	echo ${array_of_objects[@]}
-				else
-				echo -e " 
-
-					file doesnt exist"
-				fi
-
-
-		elif  [[ $answer3 == "J" ]] || [[ $answer3 == "j"  ]] then
-			 ls /home/sasuke/Bashing_Boxes/data
-
-
-			
-
-
-
-		fi 
-		}
 
 
 #greeting the user
@@ -122,7 +55,7 @@ if [[ $answer == "A" ]] || [[ $answer == "a" ]]; then
 	echo -e "
 
 	"
-	echo "D) want to put something in my magic bag (answer with the refered letter)"
+	Option2() {	echo "D) want to put something in my magic bag (answer with the refered letter)"
 	echo "E) want to remove a specific item from my magic bag"
 	echo "F) want to view a specfic item"
 	echo "G) want to remove an item at the end of the bag"
@@ -140,12 +73,71 @@ if [[ $answer == "A" ]] || [[ $answer == "a" ]]; then
 		sleep 1
 		echo -e "${array_of_objects[@]}"
 
-		echo -e "
+		echo -e"
 
 
-		"
+		"}
+	
 
-		option3
+
+		#new options
+		echo "H) save this bag!(answer with the refered letter)"
+		echo "I) load a previously saved bag"
+		echo "J) List all the saved bags"
+
+		read answer3
+
+		if [[ $answer3 == "H" ]] || [[ $answer3 == "h" ]]; then
+
+			echo -e "
+
+			K) what do you want to name this save_bag "
+			read save_name
+			touch /home/sasuke/Bashing_Boxes/data/$save_name.sh
+			declare -p array_of_objects > /home/sasuke/Bashing_Boxes/data/$save_name.sh
+
+
+		elif [[ $answer3 == "I" ]] || [[ $answer3 == "i" ]] then 
+
+		
+			 
+			echo -e "
+
+
+						Here are the saved bags"
+						
+			sleep 2
+
+			ls /home/sasuke/Bashing_Boxes/data
+
+			read -p "
+						type the name of your bag   " save_name
+
+
+				if [[ "$save_name" != *.sh ]]; then 
+				save_name="${save_name}.sh"
+				fi
+
+				save_path="/home/sasuke/Bashing_Boxes/data/$save_name"
+
+
+			if [[ -f /home/sasuke/Bashing_Boxes/data/$save_name ]] then
+
+			 source "/home/sasuke/Bashing_Boxes/data/$save_name"
+			 echo -e "
+
+			 			This array has ben loaded"
+			else
+				echo -e " 
+
+					file doesnt exist"
+
+
+			fi
+
+
+
+		fi
 
 
 
@@ -177,14 +169,8 @@ if [[ $answer == "A" ]] || [[ $answer == "a" ]]; then
 			echo -e "${array_of_objects[@]}"
 
 
+
 	fi
-	echo -e "
-
-
-	"
-	option3
-
-
 
 elif [[ $anwser == "B" ]] || [[ $anwser == "b" ]]; then
 	echo "alright"
@@ -201,7 +187,3 @@ fi
 
 
 #)i need to make save files
-
-
-
-
