@@ -14,7 +14,7 @@ array_of_objects=(
 )
 
 #Backend Option Functions
-option3(){
+	option3(){
 
 
 		echo "H) save this bag!(answer with the refered letter)"
@@ -31,6 +31,7 @@ option3(){
 			read save_name
 			touch /home/sasuke/Bashing_Boxes/data/$save_name.sh
 			declare -p array_of_objects > /home/sasuke/Bashing_Boxes/data/$save_name.sh
+			ls /home/sasuke/Bashing_Boxes/data
 
 
 		elif [[ $answer3 == "I" ]] || [[ $answer3 == "i" ]] then 
@@ -83,6 +84,7 @@ option3(){
 		}
 
 
+
 #greeting the user
 echo "Hi Traveller what's your name"
 #user types name
@@ -119,6 +121,13 @@ if [[ $answer == "A" ]] || [[ $answer == "a" ]]; then
 	echo "${array_of_objects[@]}"
 
 	sleep 2
+
+
+
+
+
+
+
 	echo -e "
 
 	"
@@ -128,6 +137,12 @@ if [[ $answer == "A" ]] || [[ $answer == "a" ]]; then
 	echo "G) want to remove an item at the end of the bag"
 
 	read answer2
+
+
+
+
+
+
 
 	if [[ $answer2 == "D" ]] || [[ $answer2 == "d" ]] then
 
@@ -144,13 +159,11 @@ if [[ $answer == "A" ]] || [[ $answer == "a" ]]; then
 
 
 		"
-
 		option3
 
+	
 
-
-
-
+	
 
 
 	elif [[ $answer2 == "E" ]] || [[ $answer2 == "e" ]] then
@@ -165,11 +178,30 @@ if [[ $answer == "A" ]] || [[ $answer == "a" ]]; then
 		unset array_of_objects[$((number-1))]
 		echo -e "${array_of_objects[@]}"
 
+		echo -e "
+
+		"
+		option3
+
+
+
+
+
 
 	elif [[ $answer2 == "F" ]] || [[ $answer2 == "f" ]]; then
 		echo "pick any number from the 0-9 to inspect it"
 		read number2
 		echo "${array_of_objects[number2]}"
+		echo -e "
+
+		"
+
+		option3
+
+
+
+
+
 
 	elif [[ $answer2 == "G" ]] || [[ $answer2 == "g" ]]; then
 
@@ -177,12 +209,17 @@ if [[ $answer == "A" ]] || [[ $answer == "a" ]]; then
 			echo -e "${array_of_objects[@]}"
 
 
+
+		echo -e"
+
+		"
+		option3
+
+
+
 	fi
-	echo -e "
 
 
-	"
-	option3
 
 
 
