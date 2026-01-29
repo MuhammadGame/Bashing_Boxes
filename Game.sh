@@ -1,19 +1,5 @@
 #!bin/bash
 
-Game(){
-
-	
-}
-
-Clanker_chooses(){
-
-	local Comp_choices=("Rock" "Paper" "Scissors" )
-
-echo  "${Comp_choices[$RANDOM % ${#Comp_choices[@]}]}"
-
-}
-Comp_choice= ($Clanker_chooses)
-
 Player_chooses(){
 		echo -e "
 
@@ -43,6 +29,35 @@ Player_chooses(){
 
 
 		}
+Clanker_chooses(){
+
+	Comp_choices=("Rock" "Paper" "Scissors" )
+
+echo  "${Comp_choices[$RANDOM % ${#Comp_choices[@]}]}"
+
+}
+
+
+	Game(){
+
+	Comp_choice=$(Clanker_chooses)
+	Player_chooses
+
+	echo "You chose $User_choice"
+	echo "PC chose $Comp_choice"
+
+	if [[  $User_choice ==  $Comp_choice  ]] then
+		echo " tie! "
+
+	elif [[ $User_choice == Rock ]] || [[ $Comp_choice == Scissors ]] 
+
+
+
+	fi	
+
+
+	}
+
 
 
 y/n_choices(){
@@ -52,7 +67,7 @@ y/n_choices(){
 
 			case $answer in
 			Y|y|yes|Yes) echo " Lets play rock,paper,scissors" 
-			Player_game
+			Game
 			;;
 			n|N|no|No) echo " its okay, you can LEAVE!!"
 			exit
