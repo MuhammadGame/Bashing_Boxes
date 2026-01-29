@@ -1,23 +1,25 @@
 #!bin/bash
-Clanker_game(){
 
-	local Clanker_choice=("Rock" "Paper" "Scissors" )
+Game(){
 
-echo  "${Clanker_choice[$RANDOM % ${#Clanker_choice[@]}]}"
-
+	
 }
 
+Clanker_chooses(){
 
-		Player_game(){
+	local Comp_choices=("Rock" "Paper" "Scissors" )
+
+echo  "${Comp_choices[$RANDOM % ${#Comp_choices[@]}]}"
+
+}
+Comp_choice= ($Clanker_chooses)
+
+Player_chooses(){
 		echo -e "
 
 
 
 		"
-	while true ; do
-			read -p "try again"
-
-
 		read   -p " 
 		A) Rock
 		B) Paper
@@ -25,22 +27,25 @@ echo  "${Clanker_choice[$RANDOM % ${#Clanker_choice[@]}]}"
 
 		case $answer2 in
 		A|a|Rock)
+			User_choice="Rock"
 			;;
 		B|b|Paper)
+			User_choice="Paper"
 		;;
 		C|c|Scissors)
+			User_choice="Scissors"
 		;;
 		*) echo "try again"
-		continue
+		y/n_choices 
 		;;
 
 		esac
-	done
+
 
 		}
 
 
-	y/n_choices(){
+y/n_choices(){
 
 		while true; do
 			read -p "$name want to play a game?" answer
