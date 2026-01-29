@@ -71,12 +71,12 @@ y/n_choices(){
 		read -p "$name want to play a game?" answer
 		case $answer in
 		Y|y|yes|Yes) echo " Lets play rock,paper,scissors" 
-		(( i++++ ))
+		(( i=2 ))
 		echo "$i"
 		Game
 		;;
 		n|N|no|No) echo " its okay, you can LEAVE!!"
-		(( i++ ))
+		(( i=2 ))
 		exit
 		;;
 		*) echo -e "\nyes or no"
