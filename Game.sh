@@ -12,23 +12,22 @@ Player_chooses(){
 		C) Scissors " answer2
 
 		case $answer2 in
-		A|a|Rock)
-			User_choice="Rock"
-			Game
-		;;
-		B|b|Paper)
-			User_choice="Paper"
-			Game
-		;;
-		C|c|Scissors)
-			User_choice="Scissors"
-			Game
+			A|a|Rock)
+				User_choice="Rock"
+				Game
+			;;
+			B|b|Paper)
+				User_choice="Paper"
+				Game
+			;;
+			C|c|Scissors)
+				User_choice="Scissors"
+				Game
 
-		;;
-		*) echo "try again"
-		y/n_choices 
-		;;
-
+			;;
+			*) echo "try again"
+			y/n_choices 
+			;;
 		esac
 
 
