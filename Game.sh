@@ -47,6 +47,39 @@ echo  "${Comp_choices[$RANDOM % ${#Comp_choices[@]}]}"
 
 	echo "You chose $User_choice"
 	echo "PC chose $Comp_choice"
+	game_result_user=0
+	if [[  $User_choice ==  $Comp_choice  ]]; then
+		echo " tie! "
+		game_result_user=2
+	else
+		case $User_choice in
+			Rock)
+				if [[ $Comp_choice == "Paper" ]]; then
+					game_result_user=0
+				else
+					game_result_user=1
+				fi
+				;;
+			Paper)
+				;;
+			Scissors)
+				;;
+			*)
+				;;
+		esac
+	fi
+	# this is better than the if statement because it checks each item rather than just checking the first item. its also much easier to edit
+
+	case $game_result_user in
+		0) echo "Computer wins!"
+		;;
+		1) echo "User wins!"
+		;;
+		2) echo "Its a tie!"
+		;;
+		*) echo "Invalid game condtion!"
+			;;
+	esac
 
 	if [[  $User_choice ==  $Comp_choice  ]] then
 		echo " tie! "
@@ -55,6 +88,8 @@ echo  "${Comp_choices[$RANDOM % ${#Comp_choices[@]}]}"
 		[[ $User_choice == Paper ]] || [[ $Comp_choice == Rock ]] || \
 		[[ $User_choice == Scissors ]] || [[ $Comp_choice == Paper ]] then 
 		echo " You Won "
+		#the if statement doesnt work because it only checks if the condition is true or not if a conditions is true its doesnt matter what the computer chooses.
+		#so long if rock is true than you will ether get a tie or a win.
 	else
 		echo "Mobro wins"
 
