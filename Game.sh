@@ -49,9 +49,14 @@ echo  "${Comp_choices[$RANDOM % ${#Comp_choices[@]}]}"
 	if [[  $User_choice ==  $Comp_choice  ]] then
 		echo " tie! "
 
-	elif [[ $User_choice == Rock ]] || [[ $Comp_choice == Scissors ]] 
+	elif [[ $User_choice == Rock ]] || [[ $Comp_choice == Scissors ]] || \
+		[[ $User_choice == Paper ]] || [[ $Comp_choice == Rock ]] || \
+		[[ $User_choice == Scissors ]] || [[ $Comp_choice == Paper ]] then 
+		echo " You Won "
+	else
+		echo "Mobro wins"
 
-
+ 
 
 	fi	
 
@@ -62,26 +67,26 @@ echo  "${Comp_choices[$RANDOM % ${#Comp_choices[@]}]}"
 
 y/n_choices(){
 
-		while true; do
-			read -p "$name want to play a game?" answer
-
-			case $answer in
-			Y|y|yes|Yes) echo " Lets play rock,paper,scissors" 
-			Game
-			;;
-			n|N|no|No) echo " its okay, you can LEAVE!!"
-			exit
-			;;
-			*) echo -e "
-
-				 yes or no"
-			continue
-			;;
+	for (( i=1; i<=1; )); do
+		read -p "$name want to play a game?" answer
+		case $answer in
+		Y|y|yes|Yes) echo " Lets play rock,paper,scissors" 
+		(( i++++ ))
+		echo "$i"
+		Game
+		;;
+		n|N|no|No) echo " its okay, you can LEAVE!!"
+		(( i++ ))
+		exit
+		;;
+		*) echo -e "\nyes or no"
+		continue
+		;;
 			
-			esac
-		done 
+		esac
+	done 
 
-	}
+}
 
 
 	read -p "hi, my name is MOBRO whats yours" name
