@@ -48,7 +48,7 @@ echo  "${Comp_choices[$RANDOM % ${#Comp_choices[@]}]}"
 	echo "You chose $User_choice"
 	echo "PC chose $Comp_choice"
 	game_result_user=0
-	if [[  $User_choice ==  $Comp_choice  ]]; then
+	if [[  "$User_choice" ==  "$Comp_choice" ]]; then
 		echo " tie! "
 		game_result_user=2
 	else
@@ -61,8 +61,18 @@ echo  "${Comp_choices[$RANDOM % ${#Comp_choices[@]}]}"
 				fi
 				;;
 			Paper)
+				if [[ $Comp_choice == "Scissors" ]]; then
+					game_result_user=0
+				else
+					game_result_user=1
+				fi
 				;;
 			Scissors)
+				if [[ $Comp_choice == "Rock" ]]; then
+					game_result_user=0
+				else
+					game_result_user=1
+				fi
 				;;
 			*)
 				;;
@@ -84,18 +94,15 @@ echo  "${Comp_choices[$RANDOM % ${#Comp_choices[@]}]}"
 	if [[  $User_choice ==  $Comp_choice  ]] then
 		echo " tie! "
 
-	elif [[ $User_choice == Rock ]] || [[ $Comp_choice == Scissors ]] || \
-		[[ $User_choice == Paper ]] || [[ $Comp_choice == Rock ]] || \
-		[[ $User_choice == Scissors ]] || [[ $Comp_choice == Paper ]] then 
-		echo " You Won "
+
 		#the if statement doesnt work because it only checks if the condition is true or not if a conditions is true its doesnt matter what the computer chooses.
 		#so long if rock is true than you will ether get a tie or a win.
-	else
-		echo "Mobro wins"
+
+	fi
 
  
 
-	fi
+	
 	for (( j=1; j<=1; )); do
 		read -p "$name want to play again? " answer3
 		case $answer3 in
