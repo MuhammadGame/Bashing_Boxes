@@ -91,14 +91,12 @@ echo  "${Comp_choices[$RANDOM % ${#Comp_choices[@]}]}"
 			;;
 	esac
 
-	if [[  $User_choice ==  $Comp_choice  ]] then
-		echo " tie! "
 
 
 		#the if statement doesnt work because it only checks if the condition is true or not if a conditions is true its doesnt matter what the computer chooses.
 		#so long if rock is true than you will ether get a tie or a win.
 
-	fi
+	
 
  
 
